@@ -4,10 +4,11 @@ package com.ng.springcore.poc;
  * Hello world!
  *
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World! Lets check if it is working" );
-    }
+public class App {
+	
+	public static void main(String[] args) {
+		
+		System.out.println("Hello World! Lets check if it is working");
+	
+	}
 }
