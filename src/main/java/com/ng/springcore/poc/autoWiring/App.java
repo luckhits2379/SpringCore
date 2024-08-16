@@ -34,7 +34,7 @@ public class App {
 		
 		
 		
-		StudentDetails studentDetail1 = context.getBean("studentDetail1", StudentDetails.class); // using collections
+		StudentDetails studentDetail1 = context.getBean("studentDetails", StudentDetails.class); // using collections
 		
 		
 		

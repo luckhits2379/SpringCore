@@ -15,7 +15,7 @@
 	<!-- <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/> -->
 
 	<!--this is bean, injecting value using setter injection, using value element -->
-	<bean class="com.ng.springcore.poc.autoWiring.Student" name="student1">
+	<bean class="com.ng.springcore.poc.autoWiring.Student" name="student1" autowire="byName">
 
 		<property name="studentId">
 			<value>123</value>
@@ -29,47 +29,36 @@
 			<value>Delhi</value>
 		</property>
 
-		<property name="studentDetails">
-			<ref bean="studentDetail1"></ref>
-		</property>
 
 	</bean>
 
 	<!--this is bean, injecting value using setter injection, using value attribute -->
-	<bean class="com.ng.springcore.poc.autoWiring.Student" name="student2">
+	<bean class="com.ng.springcore.poc.autoWiring.Student" name="student2" autowire="byName">
 
 		<property name="studentId" value="123" />
 		<property name="studentName" value="Setter using value attr" />
 		<property name="studentAddress" value="Indore" />
-		<property name="studentDetails" ref="studentDetail1" />
+		
 
 	</bean>
 
 
 
-	<!--this is bean, injecting value using setter injection, using p schema, 
-		search -->
-	<bean class="com.ng.springcore.poc.autoWiring.Student" name="student3"
-		p:studentId="123" p:studentName="Setter using p schema"
-		p:studentAddress="Bhopal" p:studentDetails-ref="studentDetail1" />
+	<!--this is bean, injecting value using setter injection, using p schema, search -->
+	<bean class="com.ng.springcore.poc.autoWiring.Student" autowire="byType" name="student3" p:studentId="123" p:studentName="Setter using p schema" p:studentAddress="Bhopal" />
 
-	<!--this is bean, injecting value using constructor injection, using value 
-		attribute -->
-	<bean class="com.ng.springcore.poc.autoWiring.Student" name="student4">
+	<!--this is bean, injecting value using constructor injection, using value  attribute -->
+	<bean class="com.ng.springcore.poc.autoWiring.Student" name="student4" autowire="constructor">
 
 		<constructor-arg value="123" type="int" />
-		<constructor-arg value="constructor using value attr"
-			type="String" />
+		<constructor-arg value="constructor using value attr" type="String" />
 		<constructor-arg value="Indore" type="String" />
-		<constructor-arg ref="studentDetail1"
-			type="StudentDetails" />
-
+		
 	</bean>
 
-	<!--this is bean, injecting value using contructor injection, using value 
-		element -->
-	<bean class="com.ng.springcore.poc.autoWiring.Student" name="student5">
-
+	<!--this is bean, injecting value using contructor injection, using value element -->
+	<bean class="com.ng.springcore.poc.autoWiring.Student" name="student5" autowire="constructor">
+		
 		<constructor-arg type="int">
 			<value>123</value>
 		</constructor-arg>
@@ -82,45 +71,31 @@
 			<value>Delhi</value>
 		</constructor-arg>
 
-		<constructor-arg type="StudentDetails">
-			<ref bean="studentDetail1"></ref>
-		</constructor-arg>
 
 	</bean>
 
 
 
 	<!--this is bean, injecting value using constructor injection, using c schema -->
-	<bean class="com.ng.springcore.poc.autoWiring.Student" name="student6"
-		c:studentId="123" c:studentName="constructor using c"
-		c:studentAddress="Bhopal" c:studentDetails-ref="studentDetail1" />
+	<bean class="com.ng.springcore.poc.autoWiring.Student" name="student6" c:studentId="123" c:studentName="constructor using c" c:studentAddress="Bhopal" c:studentDetails-ref="studentDetails" />
 
-	<!--this is bean, injecting value using constructor injection, using value 
-		attribute -->
+	<!--this is bean, injecting value using constructor injection, using value attribute -->
 	<bean class="com.ng.springcore.poc.autoWiring.Student" name="student7">
-
 		<constructor-arg value="Indore" name="studentAddress" />
-		<constructor-arg ref="studentDetail1"
-			name="studentDetails" />
-
+		<constructor-arg ref="studentDetails" name="studentDetails" />
 		<constructor-arg value="123" name="studentId" />
-		<constructor-arg
-			value="constructor using value and name attr" name="studentName" />
-
-
+		<constructor-arg value="constructor using value and name attr" name="studentName" />
 	</bean>
 
 
 	<!--this is bean, injecting value using setter injection, using value element -->
-	<bean class="com.ng.springcore.poc.autoWiring.StudentDetails"
-		name="studentDetail1" init-method="init" destroy-method="destroy">
+	<bean class="com.ng.springcore.poc.autoWiring.StudentDetails" name="studentDetails" init-method="init" destroy-method="destroy">
 
 		<property name="studentPhoneNumber">
 			<list>
 				<value>1234</value>
 				<value>1235</value>
 				<value>1236</value>
-				<null />
 			</list>
 
 		</property>
