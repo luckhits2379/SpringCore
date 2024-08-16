@@ -9,12 +9,13 @@
 		http://www.springframework.org/schema/context
 		http://www.springframework.org/schema/context/spring-context.xsd">
 
+
 	<context:annotation-config />
-	
-    <!-- <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/> -->
+
+	<!-- <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/> -->
 
 	<!--this is bean, injecting value using setter injection, using value element -->
-	<bean class="com.ng.springcore.poc.Student" name="student1">
+	<bean class="com.ng.springcore.poc.autoWiring.Student" name="student1">
 
 		<property name="studentId">
 			<value>123</value>
@@ -35,7 +36,7 @@
 	</bean>
 
 	<!--this is bean, injecting value using setter injection, using value attribute -->
-	<bean class="com.ng.springcore.poc.Student" name="student2">
+	<bean class="com.ng.springcore.poc.autoWiring.Student" name="student2">
 
 		<property name="studentId" value="123" />
 		<property name="studentName" value="Setter using value attr" />
@@ -48,13 +49,13 @@
 
 	<!--this is bean, injecting value using setter injection, using p schema, 
 		search -->
-	<bean class="com.ng.springcore.poc.Student" name="student3"
+	<bean class="com.ng.springcore.poc.autoWiring.Student" name="student3"
 		p:studentId="123" p:studentName="Setter using p schema"
 		p:studentAddress="Bhopal" p:studentDetails-ref="studentDetail1" />
 
 	<!--this is bean, injecting value using constructor injection, using value 
 		attribute -->
-	<bean class="com.ng.springcore.poc.Student" name="student4">
+	<bean class="com.ng.springcore.poc.autoWiring.Student" name="student4">
 
 		<constructor-arg value="123" type="int" />
 		<constructor-arg value="constructor using value attr"
@@ -67,7 +68,7 @@
 
 	<!--this is bean, injecting value using contructor injection, using value 
 		element -->
-	<bean class="com.ng.springcore.poc.Student" name="student5">
+	<bean class="com.ng.springcore.poc.autoWiring.Student" name="student5">
 
 		<constructor-arg type="int">
 			<value>123</value>
@@ -90,13 +91,13 @@
 
 
 	<!--this is bean, injecting value using constructor injection, using c schema -->
-	<bean class="com.ng.springcore.poc.Student" name="student6"
+	<bean class="com.ng.springcore.poc.autoWiring.Student" name="student6"
 		c:studentId="123" c:studentName="constructor using c"
 		c:studentAddress="Bhopal" c:studentDetails-ref="studentDetail1" />
 
 	<!--this is bean, injecting value using constructor injection, using value 
 		attribute -->
-	<bean class="com.ng.springcore.poc.Student" name="student7">
+	<bean class="com.ng.springcore.poc.autoWiring.Student" name="student7">
 
 		<constructor-arg value="Indore" name="studentAddress" />
 		<constructor-arg ref="studentDetail1"
@@ -108,4 +109,38 @@
 
 
 	</bean>
+
+
+	<!--this is bean, injecting value using setter injection, using value element -->
+	<bean class="com.ng.springcore.poc.autoWiring.StudentDetails"
+		name="studentDetail1" init-method="init" destroy-method="destroy">
+
+		<property name="studentPhoneNumber">
+			<list>
+				<value>1234</value>
+				<value>1235</value>
+				<value>1236</value>
+				<null />
+			</list>
+
+		</property>
+
+		<property name="subject">
+			<set>
+				<value>Maths</value>
+				<value>Hindi</value>
+				<value>English</value>
+			</set>
+		</property>
+
+		<property name="addressMap">
+			<map>
+				<entry key="home" value="Indore" />
+				<entry key="office" value="Bhopal" />
+				<entry key="other" value="Mumbai" />
+			</map>
+		</property>
+
+	</bean>
+
 </beans>

@@ -1,4 +1,4 @@
-package com.ng.springcore.poc;
+package com.ng.springcore.poc.autoWiring;
 
 import java.util.List;
 import java.util.Map;

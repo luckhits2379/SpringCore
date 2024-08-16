@@ -1,4 +1,4 @@
-package com.ng.springcore.poc;
+package com.ng.springcore.poc.autoWiring;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;

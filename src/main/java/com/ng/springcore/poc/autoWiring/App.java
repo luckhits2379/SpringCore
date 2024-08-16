@@ -1,4 +1,4 @@
-package com.ng.springcore.poc;
+package com.ng.springcore.poc.autoWiring;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
@@ -11,7 +11,7 @@ public class App {
 	public static void main(String[] args) {
 		
 		//IOC container with ApplicationContext
-		ApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"config.xml", "com/ng/springcore/poc/collection_config.xml"});
+		ApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"com/ng/springcore/poc/autoWiring/autowiring_config.xml"});
 		
 		
 		//Setter Injection example
@@ -71,11 +71,11 @@ public class App {
 		System.out.println("-------");
 		
 		//AbstractApplicationContext IOC container to register destroy method, this will call destroy method now
-		AbstractApplicationContext abstractApplicationContext = new ClassPathXmlApplicationContext("com/ng/springcore/poc/collection_config.xml");
+		AbstractApplicationContext abstractApplicationContext = new ClassPathXmlApplicationContext("com/ng/springcore/poc/autoWiring/autowiring_config.xml");
 		abstractApplicationContext.registerShutdownHook();
 		
 		//IOC container with AbstractApplicationContext init and destroy demo
-		AbstractApplicationContext context1 = new ClassPathXmlApplicationContext("com/ng/springcore/poc/collection_config.xml", "config.xml");
+		AbstractApplicationContext context1 = new ClassPathXmlApplicationContext("com/ng/springcore/poc/autoWiring/autowiring_config.xml");
 		
 		context1.registerShutdownHook();		
 		
