@@ -10,9 +10,12 @@
 		http://www.springframework.org/schema/context/spring-context.xsd">
 
 
+    <!-- enables annotations-->
 	<context:annotation-config />
 
-	<!-- <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/> -->
+		
+    <!--- Another way to enable annotations-->
+    <!-- <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/> -->
 
 	<!--this is bean, injecting value using setter injection, using value element -->
 	<bean class="com.ng.springcore.poc.autoWiring.Student" name="student1" autowire="byName">
@@ -45,7 +48,7 @@
 
 
 	<!--this is bean, injecting value using setter injection, using p schema, search -->
-	<bean class="com.ng.springcore.poc.autoWiring.Student" autowire="byType" name="student3" p:studentId="123" p:studentName="Setter using p schema" p:studentAddress="Bhopal" />
+	<bean class="com.ng.springcore.poc.autoWiring.Student" autowire="byName" name="student3" p:studentId="123" p:studentName="Setter using p schema" p:studentAddress="Bhopal" />
 
 	<!--this is bean, injecting value using constructor injection, using value  attribute -->
 	<bean class="com.ng.springcore.poc.autoWiring.Student" name="student4" autowire="constructor">
@@ -90,6 +93,36 @@
 
 	<!--this is bean, injecting value using setter injection, using value element -->
 	<bean class="com.ng.springcore.poc.autoWiring.StudentDetails" name="studentDetails" init-method="init" destroy-method="destroy">
+
+		<property name="studentPhoneNumber">
+			<list>
+				<value>1234</value>
+				<value>1235</value>
+				<value>1236</value>
+			</list>
+
+		</property>
+
+		<property name="subject">
+			<set>
+				<value>Maths</value>
+				<value>Hindi</value>
+				<value>English</value>
+			</set>
+		</property>
+
+		<property name="addressMap">
+			<map>
+				<entry key="home" value="Indore" />
+				<entry key="office" value="Bhopal" />
+				<entry key="other" value="Mumbai" />
+			</map>
+		</property>
+
+	</bean>
+	
+	<!--this is bean, injecting value using setter injection, using value element -->
+	<bean class="com.ng.springcore.poc.autoWiring.StudentDetails" name="studentDetails1" init-method="init" destroy-method="destroy">
 
 		<property name="studentPhoneNumber">
 			<list>
