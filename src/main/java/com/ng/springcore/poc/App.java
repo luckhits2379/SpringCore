@@ -11,7 +11,7 @@ public class App {
 	public static void main(String[] args) {
 		
 		//IOC container with ApplicationContext
-		ApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"config.xml", "com/ng/springcore/poc/collection_config.xml"});
+		ApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"com/ng/springcore/poc/config.xml", "com/ng/springcore/poc/collection_config.xml"});
 		
 		
 		//Setter Injection example
@@ -75,7 +75,7 @@ public class App {
 		abstractApplicationContext.registerShutdownHook();
 		
 		//IOC container with AbstractApplicationContext init and destroy demo
-		AbstractApplicationContext context1 = new ClassPathXmlApplicationContext("com/ng/springcore/poc/collection_config.xml", "config.xml");
+		AbstractApplicationContext context1 = new ClassPathXmlApplicationContext("com/ng/springcore/poc/collection_config.xml", "com/ng/springcore/poc/config.xml");
 		
 		context1.registerShutdownHook();		
 		
