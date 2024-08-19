@@ -1,12 +1,10 @@
-package com.ng.springcore.poc.stereotype;
+package com.ng.springcore.poc.springexpresssionlaunguage;
 
-import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -15,30 +13,23 @@ import org.springframework.stereotype.Component;
 public class Student implements InitializingBean, DisposableBean {
 	
 	
+	@Value("#{ T(Integer).MAX_VALUE }") 
 	private int studentId;
+	@Value("#{ new com.ng.springcore.poc.springexpresssionlaunguage.Student().getName() }")
 	private String studentName;
+	@Value("#{ 1 + 2 + 3}")
 	private String studentAddress;
 	
-	@Autowired
-	private StudentDetails studentDetails;
-	
-	@SuppressWarnings("rawtypes")
-	@Value("#{myList}")
-	private List list;
-
-	public StudentDetails getStudentDetails() {
-		return studentDetails;}
-
-	public void setStudentDetails(StudentDetails studentDetails) {
-		this.studentDetails = studentDetails;
+	public String getName() {
+		
+		return "SpEL by method";
 	}
-	
 	
 	public int getStudentId() {
 		return studentId;
 	}
 	
-	@Value("123") 
+	
 	public void setStudentId(int studentId) {
 		this.studentId = studentId;
 	}
@@ -47,7 +38,7 @@ public class Student implements InitializingBean, DisposableBean {
 		return studentName;
 	}
      
-	@Value("stereo type")
+
 	public void setStudentName(String studentName) {
 		this.studentName = studentName;
 	}
@@ -56,17 +47,16 @@ public class Student implements InitializingBean, DisposableBean {
 		return studentAddress;
 	}
     
-	@Value("stereo type")
+
 	public void setStudentAddress(String studentAddress) {
 		this.studentAddress = studentAddress;
 	}
 
-	public Student(int studentId, String studentName, String studentAddress, StudentDetails studentDetails) {
+	public Student(int studentId, String studentName, String studentAddress) {
 		super();
 		this.studentId = studentId;
 		this.studentName = studentName;
 		this.studentAddress = studentAddress;
-		this.studentDetails = studentDetails;
 	}
 
 	public Student() {
@@ -79,7 +69,7 @@ public class Student implements InitializingBean, DisposableBean {
 	@Override
 	public String toString() {
 		return "Student [studentId=" + studentId + ", studentName=" + studentName + ", studentAddress=" + studentAddress
-				+ ", studentDetails=" + studentDetails + ", list=" + list + "]";
+				+ "]";
 	}
 
 	@Override
